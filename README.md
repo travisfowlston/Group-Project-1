@@ -14,10 +14,9 @@ Create a stock market tracking web application that allows users to monitor stoc
 
 ### Front-End Development
 
-- Create the main user interface with HTML and Bulma CSS framework.
+- Create the main user interface with HTML and Materialize CSS framework.
 - Design a user-friendly layout for stock tracking and financial news sections.
-- Implement responsive design for mobile and desktop views.
-- Build a navigation bar or sidebar for easy access to different features.
+- Build a sidebar for easy access to different features.
 - Develop placeholders for stock data, news, and watchlists.
 
 ### Server-Side API Integration
@@ -36,3 +35,10 @@ Create a stock market tracking web application that allows users to monitor stoc
 
 - Alpha Vantage for stock data
 - news API for financial news
+
+## Contributors
+
+- Travis Fowlston
+- Logan Fullerton
+- Alejandro Nunez
+- Neilsen Zulueta
