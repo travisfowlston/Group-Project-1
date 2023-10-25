@@ -6,9 +6,9 @@ Create a stock market tracking web application that allows users to monitor stoc
 
 ## User Story
 
-As a financial analyst
-I WANT to track my favorite stocks
-SO THAT I can evaluate and make informed investment decisions.
+- As a financial analyst
+- I WANT to track my favorite stocks
+- SO THAT I can evaluate and make informed investment decisions.
 
 ## Task Breakdown
 
