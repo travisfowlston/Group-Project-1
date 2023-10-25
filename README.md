@@ -1,16 +1,16 @@
-# Work Day Scheduler
+# Stock Market Dashboard
 
 ## Project Description
 
-The Module 5 Challenge objective was to create a simple calendar application that allows a user to save events for each hour of a typical working day (9am–5pm). This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.
+Create a stock market tracking web application that allows users to monitor stock prices and financial news. This application will run in the browser and feature dynamically updated HTML and CSS powered by JavaScript.
 
-## Deployment Screenshot
+## User Story
 
-![deployment-screenshot]
+As a financial analyst
+I WANT to track my favorite stocks
+SO THAT I can evaluate and make informed investment decisions.
 
-[Deployment Link]
-
-## Comments
+## Task Breakdown
 
 - Added the current date and time to the header using day.js.
 - Created time blocks for standard business hours of 9am to 5pm.
@@ -18,11 +18,7 @@ The Module 5 Challenge objective was to create a simple calendar application tha
 - Each time block can have an event added to it and can be saved to localStorage.
 - When the page is refreshed, the saved event will persist.
 
-## Credits
+## Api's
 
-- Starter code was provided by the UC Davis Bootcamp.
-- Project was completed by Travis Fowlston.
-
-## License
-
-- N/A
+- Alpha Vantage for stock data
+- news API for financial news
