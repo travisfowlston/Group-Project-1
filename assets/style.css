@@ -1,0 +1,15 @@
+:root {
+    --bgcolor: #666;
+}
+
+header {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+}
+
+/* #card {
+    max-width: fit-content;
+} */
+/* #nav-card {
+    padding-bottom: 100%;
+} */
