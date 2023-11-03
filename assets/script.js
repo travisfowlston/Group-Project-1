@@ -56,13 +56,14 @@ function handleClick(event) {
     console.log(data);
    var openPrice = data["Time Series (Daily)"];
    console.log(openPrice);
-   var lastEntry = Object.entries(openPrice).slice(-1)[0];
+   var lastKey = Object.keys(openPrice).slice(-1)[0];
+  var lastEntry = openPrice[lastKey];
   console.log(lastEntry);
   
   let stocksContainer = document.getElementById('stocksholder');
   let listEl = document.createElement('li');
   listEl.classList.add("collection-item");
-  listEl.textContent = JSON.stringify(lastEntry);
+  listEl.textContent = "Date: " + lastEntry[0] + ", Open Price: " + lastEntry[1]["1. open"];
   stocksContainer.append(listEl);
 })
 }
