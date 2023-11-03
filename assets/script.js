@@ -54,8 +54,16 @@ function handleClick(event) {
   })
   .then(function (data) {
     console.log(data);
-   let openPrice = data.times_series_daily
-   console.log(openPrice)
+   var openPrice = data["Time Series (Daily)"];
+   console.log(openPrice);
+   var lastEntry = Object.entries(openPrice).slice(-1)[0];
+  console.log(lastEntry);
+  
+  let stocksContainer = document.getElementById('stocksholder');
+  let listEl = document.createElement('li');
+  listEl.classList.add("collection-item");
+  listEl.textContent = JSON.stringify(lastEntry);
+  stocksContainer.append(listEl);
 })
 }
 
