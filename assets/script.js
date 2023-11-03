@@ -2,7 +2,61 @@ var loganAlphaKey = "O1GHS9U2N3JN93J1"
 var marketAuxAPIKey = "0q9h2RqrW3R4xzDRc1WADtChaNPpwLUPxY2z6bJf"
 var travisAlphaKey = "IT2CROV94Q2OSDII"
 
-var newsURL = "https://api.marketaux.com/v1/news/all?symbols=TSLA,AMZN,MSFT&filter_entities=true&language=en&api_token=YOUR_API_TOKEN"
+// Wait for the document to fully load before executing the script.
+document.addEventListener('DOMContentLoaded', function () {
+  var newsButton = document.querySelector("#newsButton");
+
+  // Event listener to the newsButton to retrieve articles when clicked.
+  newsButton.addEventListener("click", retrieve);
+
+  // Function to fetch articles.
+  function retrieve(e) {
+    e.preventDefault();
+
+    var apiKey = '0q9h2RqrW3R4xzDRc1WADtChaNPpwLUPxY2z6bJf';
+    let newsURL = `https://api.marketaux.com/v1/news/all?symbols=TSLA,AMZN,MSFT&filter_entities=true&language=en&api_token=${apiKey}`;
+
+    // Fetch request to get news articles.
+    fetch(newsURL)
+        .then(res => {
+            // Check if the response is successful, otherwise throw an error.
+            if (!res.ok) {
+                throw new Error('Network response was not ok');
+            }
+            // Convert the response to JSON format.
+            return res.json();
+        })
+        .then(responseData => {
+          // Log the data for debugging purposes.
+          console.log(responseData);
+      
+          // Extract articles from the response data.
+          let articles = responseData.data;
+          
+          // Check if the articles data is in the correct format.
+          if (!Array.isArray(articles)) {
+              throw new Error('Invalid articles data received');
+          }
+      
+          var newsList = document.querySelector(".news-list");
+          newsList.innerHTML = ''; 
+          
+          // Loop through each article and display it in the newsList.
+          articles.forEach(article => {
+              let li = document.createElement('li');
+              let a = document.createElement('a');
+              
+              // Set the URL and target attributes for the article link.
+              a.setAttribute('href', article.url); 
+              a.setAttribute('target', '_blank');
+              // Set the text content of the link to the article's title.
+              a.textContent = article.title;
+              li.appendChild(a);
+              newsList.appendChild(li);
+          });
+      })
+    }
+  })
 
 var submitButton = document.getElementById("submit-btn");
 
