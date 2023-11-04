@@ -43,6 +43,7 @@ submitButton.addEventListener("click", function () {
 
 // Step 1: Create the event handler function
 function handleClick(event) {
+  event.preventDefault()
 // Perform the desired action
 var symbol = event.target.textContent.split(",")[0].trim();
 var getDailyStock = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${travisAlphaKey}`
@@ -70,35 +71,35 @@ let stocksContainer = document.getElementById('stocksholder');
 let heading = document.getElementById('symbol-header');
 heading.textContent = "Symbol: " + symbol;
 
-let dateEl = document.createElement('li');
+let dateEl = document.getElementById('dateEl');
 dateEl.classList.add("collection-item");
-dateEl.textContent = "Date: " + lastKey
-stocksContainer.append(dateEl);
+dateEl.textContent = "Date: " + lastKey;
 
-let openEl = document.createElement('li');
+
+let openEl = document.getElementById('openEl');
 openEl.classList.add("collection-item");
 openEl.textContent = "Open Price: " + lastEntry["1. open"];
-stocksContainer.append(openEl);
 
-let highEl = document.createElement('li');
+
+let highEl = document.getElementById('highEl');
 highEl.classList.add("collection-item");
 highEl.textContent = "Highest Price: " + lastEntry["2. high"];
-stocksContainer.append(highEl);
 
-let lowEl = document.createElement('li');
+
+let lowEl = document.getElementById('lowEl');
 lowEl.classList.add("collection-item");
 lowEl.textContent = "Lowest Price: " + lastEntry["3. low"];
-stocksContainer.append(lowEl);
 
-let closeEl = document.createElement('li');
+
+let closeEl = document.getElementById('closeEl');
 closeEl.classList.add("collection-item");
 closeEl.textContent = "Closing Price: " + lastEntry["4. close"];
-stocksContainer.append(closeEl);
 
-let volumeEl = document.createElement('li');
+
+let volumeEl = document.getElementById('volumeEl');
 volumeEl.classList.add("collection-item");
 volumeEl.textContent = "Volume: " + lastEntry["5. volume"];
-stocksContainer.append(volumeEl);
+
 })
 }
 // Step 2: Target the parent element
