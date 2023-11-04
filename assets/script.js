@@ -1,6 +1,6 @@
 var loganAlphaKey = "O1GHS9U2N3JN93J1"
 var marketAuxAPIKey = "0q9h2RqrW3R4xzDRc1WADtChaNPpwLUPxY2z6bJf"
-var travisAlphaKey = "IT2CROV94Q2OSDII"
+var travisAlphaKey = "C4QRQCGFI8VC6NQI"
 
 var newsURL = "https://api.marketaux.com/v1/news/all?symbols=TSLA,AMZN,MSFT&filter_entities=true&language=en&api_token=YOUR_API_TOKEN"
 
@@ -27,6 +27,7 @@ submitButton.addEventListener("click", function () {
     console.log(data); // Log the response data to inspect its structure
     var bestMatch = data.bestMatches;
     let btnCard = document.getElementById('tickers');
+    btnCard.innerHTML = "";
 
     for (var i = 0; i < bestMatch.length; i++) {
       var symbolResponse = bestMatch[i];
@@ -38,48 +39,79 @@ submitButton.addEventListener("click", function () {
       btnCard.append(buttonEl);
     }
   })
-  // Step 1: Create the event handler function
+})
+
+// Step 1: Create the event handler function
 function handleClick(event) {
-  // Perform the desired action
-  var symbol = event.target.textContent.split(",")[0].trim();
-  var getDailyStock = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${travisAlphaKey}`
-  
-  fetch(getDailyStock)
-  .then(function (response) {
-    if (response.ok) {
-      return response.json();
-    } else {
-      throw new Error("Error: " + response.status);
-    }
-  })
-  .then(function (data) {
-    console.log(data);
-   var openPrice = data["Time Series (Daily)"];
-   console.log(openPrice);
-   var lastKey = Object.keys(openPrice).slice(-1)[0];
-  var lastEntry = openPrice[lastKey];
-  console.log(lastEntry);
-  
-  let stocksContainer = document.getElementById('stocksholder');
-  let listEl = document.createElement('li');
-  listEl.classList.add("collection-item");
-  listEl.textContent = "Date: " + lastEntry[0] + ", Open Price: " + lastEntry[1]["1. open"];
-  stocksContainer.append(listEl);
+// Perform the desired action
+var symbol = event.target.textContent.split(",")[0].trim();
+var getDailyStock = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${travisAlphaKey}`
+
+fetch(getDailyStock)
+.then(function (response) {
+  if (response.ok) {
+    return response.json();
+  } else {
+    throw new Error("Error: " + response.status);
+  }
+})
+.then(function (data) {
+  console.log(data);
+ var openPrice = data["Time Series (Daily)"];
+ console.log(openPrice);
+ var keys = Object.keys(openPrice);
+var sortedKeys = keys.sort(); // Sort the keys in ascending order
+var lastKey = sortedKeys[sortedKeys.length - 1]; // Retrieve the last key
+var lastEntry = openPrice[lastKey]; // Access the value corresponding to the last key
+console.log(lastEntry);
+
+let stocksContainer = document.getElementById('stocksholder');
+
+let heading = document.getElementById('symbol-header');
+heading.textContent = "Symbol: " + symbol;
+
+let dateEl = document.createElement('li');
+dateEl.classList.add("collection-item");
+dateEl.textContent = "Date: " + lastKey
+stocksContainer.append(dateEl);
+
+let openEl = document.createElement('li');
+openEl.classList.add("collection-item");
+openEl.textContent = "Open Price: " + lastEntry["1. open"];
+stocksContainer.append(openEl);
+
+let highEl = document.createElement('li');
+highEl.classList.add("collection-item");
+highEl.textContent = "Highest Price: " + lastEntry["2. high"];
+stocksContainer.append(highEl);
+
+let lowEl = document.createElement('li');
+lowEl.classList.add("collection-item");
+lowEl.textContent = "Lowest Price: " + lastEntry["3. low"];
+stocksContainer.append(lowEl);
+
+let closeEl = document.createElement('li');
+closeEl.classList.add("collection-item");
+closeEl.textContent = "Closing Price: " + lastEntry["4. close"];
+stocksContainer.append(closeEl);
+
+let volumeEl = document.createElement('li');
+volumeEl.classList.add("collection-item");
+volumeEl.textContent = "Volume: " + lastEntry["5. volume"];
+stocksContainer.append(volumeEl);
 })
 }
-
 // Step 2: Target the parent element
 var parentElement = document.getElementById("tickers");
 
 // Step 3: Attach the event listener to the parent element
 parentElement.addEventListener("click", function(event) {
-  // Step 4: Check if the clicked element matches the dynamically generated buttons
-  if (event.target.matches("button")) {
-    // Step 5: Perform the desired action
-    handleClick(event);
-  }
+// Step 4: Check if the clicked element matches the dynamically generated buttons
+if (event.target.matches("button")) {
+  // Step 5: Perform the desired action
+  handleClick(event);
+}
 });
-})
 
 // Wait for the document to fully load before executing the script.
 document.addEventListener('DOMContentLoaded', function () {
