@@ -143,9 +143,13 @@ function displayFavoriteStock() {
     buttonEl.classList.add("btn-small");
     buttonEl.textContent = favoriteStock;
     favoriteStocksSection.appendChild(buttonEl);
-  }
-}
+    buttonEl.addEventListener('click',handleClick)
+  
+  
+  }}
 displayFavoriteStock();
+
+buttonEl.addEventListener('click',handleClick)
 
 /* This section was completed by Neilson Zulueta */
 // Wait for the document to fully load before executing the script.
