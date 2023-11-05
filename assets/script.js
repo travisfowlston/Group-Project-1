@@ -132,18 +132,25 @@ var favoriteStocksSection = document.getElementById('favoriteStocksSection');
 function saveButtonToLocalStorage(event) {
   event.preventDefault();
   var symbolAndName = event.target.textContent;
-  localStorage.setItem('favoriteStocks', symbolAndName);
-  displayFavoriteStock();
+  var favoriteStocks = JSON.parse(localStorage.getItem('favoriteStocks')) || [];
+  if (!favoriteStocks.includes(symbolAndName)) {
+    // Add the new stock to the array
+    favoriteStocks.push(symbolAndName);
+    localStorage.setItem('favoriteStocks', JSON.stringify(favoriteStocks));
+    displayFavoriteStock();
+  }
 }
 
 function displayFavoriteStock() {
-  var favoriteStock = localStorage.getItem('favoriteStocks');
-  if (favoriteStock) {
+  var favoriteStocks = JSON.parse(localStorage.getItem('favoriteStocks')) || [];
+  favoriteStocksSection.innerHTML = '';
+  favoriteStocks.forEach(function(stock) {
     var buttonEl = document.createElement('button');
     buttonEl.classList.add("btn-small");
-    buttonEl.textContent = favoriteStock;
+    buttonEl.textContent = stock;
     favoriteStocksSection.appendChild(buttonEl);
-  }
+    buttonEl.addEventListener('click', handleClick)
+  });
 }
 displayFavoriteStock();
 
