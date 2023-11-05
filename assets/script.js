@@ -22,20 +22,20 @@ submitButton.addEventListener("click", function () {
     }
   })
   .then(function (data) {
-    console.log(data); // Log the response data to inspect its structure
+    console.log(data);
     var bestMatch = data.bestMatches;
     let btnCard = document.getElementById('tickers');
     btnCard.innerHTML = "";
 
     for (var i = 0; i < bestMatch.length; i++) {
       var symbolResponse = bestMatch[i];
-      console.log(symbolResponse['1. symbol'] + ", " + symbolResponse['2. name']); // Log the name property to check if it's defined
+      console.log(symbolResponse['1. symbol'] + ", " + symbolResponse['2. name']);
 
       let buttonEl = document.createElement('button');
       buttonEl.classList.add("btn-small");
       buttonEl.innerHTML = symbolResponse['1. symbol'] + ", " + symbolResponse['2. name'];
 
-      // Attach the event listener to the button
+      /* Attaches an event listener on the button. */
       buttonEl.addEventListener("click", function(event) {
         event.preventDefault();
         handleClick(event);
@@ -46,13 +46,12 @@ submitButton.addEventListener("click", function () {
   })
 })
 
-// Step 1: Create the event handler function
+/* Create a function that handles and displays the stock that was clicked */
 function handleClick(event) {
   event.preventDefault()
-// Perform the desired action
 var symbol = event.target.textContent.split(",")[0].trim();
 var getDailyStock = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${travisAlphaKey}`
-
+/* Fetches the daily stock information from the API and throws an error if with that status if it can't retrieve the info. */
 fetch(getDailyStock)
 .then(function (response) {
   if (response.ok) {
@@ -65,15 +64,16 @@ fetch(getDailyStock)
   console.log(data);
 var openPrice = data["Time Series (Daily)"];
   console.log(openPrice);
+/* Uses the openPrice variable to sort the keys in ascending order, retrieve only the last key, and then access that last key */
 var keys = Object.keys(openPrice);
-var sortedKeys = keys.sort(); // Sort the keys in ascending order
-var lastKey = sortedKeys[sortedKeys.length - 1]; // Retrieve the last key
-var lastEntry = openPrice[lastKey]; // Access the value corresponding to the last key
+var sortedKeys = keys.sort();
+var lastKey = sortedKeys[sortedKeys.length - 1];
+var lastEntry = openPrice[lastKey];
   console.log(lastEntry);
-
+/* Takes the found symbol and displays it in the container */
 let heading = document.getElementById('symbol-header');
 heading.textContent = "Symbol: " + symbol;
-
+/* Uses the sorted keys and displays it in the container */
 let dateEl = document.getElementById('dateEl');
 dateEl.classList.add("collection-item");
 dateEl.textContent = "Date: " + lastKey;
@@ -105,16 +105,14 @@ volumeEl.textContent = "Volume: " + lastEntry["5. volume"];
 
 })
 }
-// Step 2: Target the parent element
+/* Targets the parent element "tickers" */
 var parentElement = document.getElementById("tickers");
 
-// Step 3: Attach the event listener to the parent element
+/* Attaches the event listener to the parent element */
 parentElement.addEventListener("click", function(event) {
-// Step 4: Check if the clicked element matches the dynamically generated buttons
-if (event.target.matches("button")) {
-  // Step 5: Perform the desired action
+  if (event.target.matches("button")) {
   handleClick(event);
-}
+  }
 });
 /* Clears the user input using the close icon in the search bar. */
 document.getElementById('close-icon').addEventListener('click', function() {
@@ -128,19 +126,18 @@ clearFavoritesBtn.addEventListener("click", function() {
 });
 
 var favoriteStocksSection = document.getElementById('favoriteStocksSection');
-/* A function to save to localStorage and create a new button in the Watchlist. */
+/* Created a function to save the clicked stock to localStorage in the Favorite Stocks Section as an array. */
 function saveButtonToLocalStorage(event) {
   event.preventDefault();
   var symbolAndName = event.target.textContent;
   var favoriteStocks = JSON.parse(localStorage.getItem('favoriteStocks')) || [];
   if (!favoriteStocks.includes(symbolAndName)) {
-    // Add the new stock to the array
     favoriteStocks.push(symbolAndName);
     localStorage.setItem('favoriteStocks', JSON.stringify(favoriteStocks));
     displayFavoriteStock();
   }
 }
-
+/* Creates and displays a button using the localeStorage with the saved array. */
 function displayFavoriteStock() {
   var favoriteStocks = JSON.parse(localStorage.getItem('favoriteStocks')) || [];
   favoriteStocksSection.innerHTML = '';
@@ -149,13 +146,13 @@ function displayFavoriteStock() {
     buttonEl.classList.add("btn-small");
     buttonEl.textContent = stock;
     favoriteStocksSection.appendChild(buttonEl);
+    /* Uses the handleClick function to request the info back from the API. */
     buttonEl.addEventListener('click', handleClick)
   });
 }
 displayFavoriteStock();
 
 /* This section was completed by Neilson Zulueta */
-// Wait for the document to fully load before executing the script.
 document.addEventListener('DOMContentLoaded', function () {
   var newsButton = document.querySelector("#newsButton");
 
