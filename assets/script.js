@@ -152,13 +152,7 @@ function displayFavoriteStock() {
     buttonEl.addEventListener('click', handleClick)
   });
 }
-    buttonEl.addEventListener('click',handleClick)
-  
-  
-  }}
 displayFavoriteStock();
-
-buttonEl.addEventListener('click',handleClick)
 
 /* This section was completed by Neilson Zulueta */
 // Wait for the document to fully load before executing the script.
