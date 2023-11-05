@@ -152,7 +152,7 @@ function displayFavoriteStock() {
 }
 displayFavoriteStock();
 
-/* This section was completed by Neilson Zulueta */
+/* The section was completed by Neilson Zulueta */
 document.addEventListener('DOMContentLoaded', function () {
   var newsButton = document.querySelector("#newsButton");
 
