@@ -1,9 +1,7 @@
 var loganAlphaKey = "O1GHS9U2N3JN93J1"
-var marketAuxAPIKey = "0q9h2RqrW3R4xzDRc1WADtChaNPpwLUPxY2z6bJf"
 var travisAlphaKey = "C4QRQCGFI8VC6NQI"
 
-var newsURL = "https://api.marketaux.com/v1/news/all?symbols=TSLA,AMZN,MSFT&filter_entities=true&language=en&api_token=YOUR_API_TOKEN"
-
+/* This section was completed by Travis Fowlston and Logan Fullerton */
 var submitButton = document.getElementById("submit-btn");
 
 submitButton.addEventListener("click", function () {
@@ -36,6 +34,12 @@ submitButton.addEventListener("click", function () {
       let buttonEl = document.createElement('button');
       buttonEl.classList.add("btn-small");
       buttonEl.innerHTML = symbolResponse['1. symbol'] + ", " + symbolResponse['2. name'];
+
+      // Attach the event listener to the button
+      buttonEl.addEventListener("click", function(event) {
+        event.preventDefault();
+        handleClick(event);
+      });
       btnCard.append(buttonEl);
     }
   })
@@ -58,15 +62,13 @@ fetch(getDailyStock)
 })
 .then(function (data) {
   console.log(data);
- var openPrice = data["Time Series (Daily)"];
- console.log(openPrice);
- var keys = Object.keys(openPrice);
+var openPrice = data["Time Series (Daily)"];
+  console.log(openPrice);
+var keys = Object.keys(openPrice);
 var sortedKeys = keys.sort(); // Sort the keys in ascending order
 var lastKey = sortedKeys[sortedKeys.length - 1]; // Retrieve the last key
 var lastEntry = openPrice[lastKey]; // Access the value corresponding to the last key
-console.log(lastEntry);
-
-let stocksContainer = document.getElementById('stocksholder');
+  console.log(lastEntry);
 
 let heading = document.getElementById('symbol-header');
 heading.textContent = "Symbol: " + symbol;
@@ -113,7 +115,19 @@ if (event.target.matches("button")) {
   handleClick(event);
 }
 });
+/* Clears the user input using the close icon in the search bar. */
+document.getElementById('close-icon').addEventListener('click', function() {
+  document.getElementById('userInput').value = '';
+});
+/* Clears the saved input from the localStorage. */
+var clearFavoritesButton = document.getElementById('clear-favorites');
+clearFavoritesButton.addEventListener("click", function() {
+  localStorage.removeItem('favoriteStocks');
+  favoriteStocksSection.innerHTML = "";
+});
 
+
+/* This section was completed by Neilson Zulueta */
 // Wait for the document to fully load before executing the script.
 document.addEventListener('DOMContentLoaded', function () {
   var newsButton = document.querySelector("#newsButton");
