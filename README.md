@@ -40,5 +40,4 @@ Create a stock market tracking web application that allows users to monitor stoc
 
 - Travis Fowlston
 - Logan Fullerton
-- Alejandro Nunez
 - Neilsen Zulueta
