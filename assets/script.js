@@ -40,6 +40,7 @@ submitButton.addEventListener("click", function () {
         event.preventDefault();
         handleClick(event);
       });
+      buttonEl.addEventListener("click", saveButtonToLocalStorage);
       btnCard.append(buttonEl);
     }
   })
@@ -120,12 +121,31 @@ document.getElementById('close-icon').addEventListener('click', function() {
   document.getElementById('userInput').value = '';
 });
 /* Clears the saved input from the localStorage. */
-var clearFavoritesButton = document.getElementById('clear-favorites');
-clearFavoritesButton.addEventListener("click", function() {
+var clearFavoritesBtn = document.getElementById('clear-favorites');
+clearFavoritesBtn.addEventListener("click", function() {
   localStorage.removeItem('favoriteStocks');
   favoriteStocksSection.innerHTML = "";
 });
 
+var favoriteStocksSection = document.getElementById('favoriteStocksSection');
+/* A function to save to localStorage and create a new button in the Watchlist. */
+function saveButtonToLocalStorage(event) {
+  event.preventDefault();
+  var symbolAndName = event.target.textContent;
+  localStorage.setItem('favoriteStocks', symbolAndName);
+  displayFavoriteStock();
+}
+
+function displayFavoriteStock() {
+  var favoriteStock = localStorage.getItem('favoriteStocks');
+  if (favoriteStock) {
+    var buttonEl = document.createElement('button');
+    buttonEl.classList.add("btn-small");
+    buttonEl.textContent = favoriteStock;
+    favoriteStocksSection.appendChild(buttonEl);
+  }
+}
+displayFavoriteStock();
 
 /* This section was completed by Neilson Zulueta */
 // Wait for the document to fully load before executing the script.
