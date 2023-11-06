@@ -39,7 +39,7 @@ Create a stock market tracking web application that allows users to monitor stoc
 
 ## Api's
 
-- Alpha Vantage for stock data.
+- Alpha Vantage API for stock data.
 - Marketaux API for financial news.
 
 ## Contributors
