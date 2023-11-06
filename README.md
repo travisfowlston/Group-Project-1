@@ -10,6 +10,12 @@ Create a stock market tracking web application that allows users to monitor stoc
 - I WANT to track my favorite stocks
 - SO THAT I can evaluate and make informed investment decisions.
 
+## Deployment Screenshot
+
+![deployment-screenshot](./assets/images/deployment-screenshot.JPG)
+
+[Deployment Link](https://travisfowlston.github.io/Stock-Market-Dashboard/)
+
 ## Task Breakdown
 
 ### Front-End Development
@@ -41,4 +47,3 @@ Create a stock market tracking web application that allows users to monitor stoc
 - Travis Fowlston
 - Logan Fullerton
 - Neilsen Zulueta
-- Alejandro Nunez
