@@ -22,22 +22,23 @@ Create a stock market tracking web application that allows users to monitor stoc
 ### Server-Side API Integration
 
 - Integrate Alpha Vantage API to fetch stock data, including current prices and historical data.
-- Integrate a financial news API to retrieve real-time financial news articles related to the stock market.
+- Integrate Marketaux API to retrieve real-time financial news articles related to the stock market.
 - Handle API requests and responses, ensuring data is correctly displayed in the UI.
 
 ### Client-Side Storage
 
-- Implement client-side storage (localStorage or sessionStorage) to allow users to save and manage their favorite stocks.
+- Implement client-side storage to allow users to save and manage their favorite stocks.
 - Create a user interface for adding and removing stocks from the watchlist.
 - Ensure the watchlist data persists across sessions.
 
 ## Api's
 
-- Alpha Vantage for stock data
-- news API for financial news
+- Alpha Vantage for stock data.
+- Marketaux API for financial news.
 
 ## Contributors
 
 - Travis Fowlston
 - Logan Fullerton
 - Neilsen Zulueta
+- Alejandro Nunez

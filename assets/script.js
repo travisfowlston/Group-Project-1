@@ -2,12 +2,22 @@ var loganAlphaKey = "O1GHS9U2N3JN93J1"
 var travisAlphaKey = "C4QRQCGFI8VC6NQI"
 
 /* This section was completed by Travis Fowlston and Logan Fullerton */
-var submitButton = document.getElementById("submit-btn");
+var userInput = document.getElementById("userInput");
+userInput.addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    handleSubmit()
+  }
+});
 
+var submitButton = document.getElementById("submit-btn");
 submitButton.addEventListener("click", function () {
     /* Prevents default action of submit button. */
     event.preventDefault();
+    handleSubmit()
+});
    
+function handleSubmit() {
     /* Uses the user input to generate the url path by inserting the company name or symbol. */
     var searchByCompany = document.getElementById("userInput").value;
     var stocksURL = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${searchByCompany}&apikey=${travisAlphaKey}`
@@ -44,7 +54,8 @@ submitButton.addEventListener("click", function () {
       btnCard.append(buttonEl);
     }
   })
-})
+}
+
 
 /* Create a function that handles and displays the stock that was clicked */
 function handleClick(event) {
