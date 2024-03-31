@@ -2,7 +2,7 @@
 
 ## Project Description
 
-Create a stock market tracking web application that allows users to monitor stock prices and financial news. This application will run in the browser and feature dynamically updated HTML and CSS powered by JavaScript.
+The Stock Market Dashboard, powered by Materialize CSS, offers users a comprehensive platform to effortlessly track stock prices and stay informed with the latest financial news. Leveraging the Alpha Vantage API and Marketaux API, users can access comprehensive stock data and real-time financial news directly within their browser. Additionally, the application ensures that user data persists across different sessions, providing a seamless and personalized experience for every user.
 
 ## User Story
 
