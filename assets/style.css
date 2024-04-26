@@ -1,37 +1,34 @@
 :root {
-    --bgcolor: #b0bec5;
+  --bgcolor: #b0bec5;
 }
 
 body {
-    background-color: var(--bgcolor);
+  background-color: var(--bgcolor);
 }
 
 .header-container {
-    padding: 20px;
-  }
+  padding: 20px;
+}
 
 .banner {
-    padding: 40px;
-    text-align: center;
-  }
+  padding: 40px;
+  text-align: center;
+}
 
 header {
-    margin-bottom: 30px;
-    padding-bottom: 30px;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
 }
 
 .news-list a {
-    font-size: 24px; 
-    text-decoration: underline;
+  font-size: 24px;
+  text-decoration: underline;
 }
 .news-list li {
-    padding-left: 20px; 
-    margin-top: 10px;    
+  padding-left: 20px;
+  margin-top: 10px;
 }
 
-/* #card {
-    max-width: fit-content;
-} */
-/* #nav-card {
-    padding-bottom: 100%;
-} */
+#submit-btn {
+  margin-top: 15px;
+}
