@@ -6,24 +6,29 @@ body {
   background-color: var(--bgcolor);
 }
 
+h1 {
+  font-size: 3.5rem;
+}
+
 .header-container {
-  padding: 20px;
+  padding: 15px;
 }
 
 .banner {
-  padding: 40px;
+  padding: 30px;
   text-align: center;
 }
 
 header {
-  margin-bottom: 30px;
-  padding-bottom: 30px;
+  margin-bottom: 15px;
+  padding-bottom: 20px;
 }
 
 .news-list a {
   font-size: 24px;
   text-decoration: underline;
 }
+
 .news-list li {
   padding-left: 20px;
   margin-top: 10px;
@@ -35,4 +40,24 @@ header {
 
 #copyright {
   color: white;
+}
+
+@media screen and (max-width: 500px) {
+  .header-container {
+    padding: 10px;
+  }
+
+  .banner {
+    padding: 20px;
+    text-align: center;
+  }
+
+  header {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
 }

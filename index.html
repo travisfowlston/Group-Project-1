@@ -35,15 +35,13 @@
     <main>
       <!-- First row for Stock Information  -->
       <div class="row">
-        <div class="col s3">
-          <!-- card number 1 -->
+        <div class="col s12 m4 l3">
           <div class="card blue-grey darken-1 hoverable" id="card">
             <div class="card-content white-text">
               <span class="card-title">Search for Stocks</span>
               <p>
-                Search using the name or symbol of the of the company you are
-                looking for. Then click on the option that best matches your
-                company on the buttons below!
+                Look up the company by its name or symbol, then select the
+                option that closely matches your company from the buttons below!
               </p>
             </div>
             <div class="card-action">
@@ -72,7 +70,26 @@
             </div>
             <div class="collection" id="tickers"></div>
           </div>
-          <!-- Favorites stock Watchlist -->
+        </div>
+
+        <div class="col s12 m8 l9">
+          <ul class="collection with-header hoverable" id="stocksholder">
+            <li class="collection-header">
+              <h4 id="symbol-header">Symbol:</h4>
+            </li>
+            <li class="collection-item" id="dateEl">Date:</li>
+            <li class="collection-item" id="openEl">Open Price:</li>
+            <li class="collection-item" id="highEl">Highest Price:</li>
+            <li class="collection-item" id="lowEl">Lowest Price:</li>
+            <li class="collection-item" id="closeEl">Close Price:</li>
+            <li class="collection-item" id="volumeEl">Volume:</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12 m4 l3">
+          <!-- Note that "m4 l3" was added -->
           <div class="card blue-grey darken-1 hoverable">
             <div class="card-content white-text">
               <span class="card-title">Favorite Stocks Watchlist</span>
@@ -88,25 +105,11 @@
             <div class="card-action" id="favoriteStocksSection"></div>
           </div>
         </div>
-        <!-- Right column -->
-        <div class="col s9">
-          <!-- display for stocks -->
-          <ul class="collection with-header hoverable" id="stocksholder">
-            <li class="collection-header">
-              <h4 id="symbol-header">Symbol:</h4>
-            </li>
-            <li class="collection-item" id="dateEl">Date:</li>
-            <li class="collection-item" id="openEl">Open Price:</li>
-            <li class="collection-item" id="highEl">Highest Price:</li>
-            <li class="collection-item" id="lowEl">Lowest Price:</li>
-            <li class="collection-item" id="closeEl">Close Price:</li>
-            <li class="collection-item" id="volumeEl">Volume:</li>
-          </ul>
-        </div>
       </div>
-      <!-- Second row for Financial News -->
+
       <div class="row">
-        <div class="col s3">
+        <div class="col s12 m4 l3">
+          <!-- Note that "m4 l3" was added -->
           <!-- Card number 2 -->
           <div class="card blue-grey darken-1 hoverable" id="card">
             <div class="card-content white-text">
@@ -124,14 +127,15 @@
           </div>
         </div>
 
-        <div class="col s9">
-          <!-- display for financial news articles -->
+        <div class="col s12 m8 l9">
+          <!-- Note that "m8 l9" was added -->
           <ul class="collection with-header hoverable">
             <li class="collection-header"><h4>Articles</h4></li>
             <li class="collection-item news-list"><p</li>
           </ul>
         </div>
       </div>
+
       <!-- Footer Section -->
       <footer class="header-container teal lighten-2 z-depth-3">
         <span id="copyright">Made with ❤ by Travis, Logan, and Neilsen</span>
